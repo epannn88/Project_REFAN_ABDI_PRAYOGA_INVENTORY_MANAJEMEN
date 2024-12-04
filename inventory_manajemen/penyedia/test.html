@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nama Barang</th>
+      <th>Stock</th>
+      <th>Harga</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    ...
+  </tbody>
+</table>
+$query = "SELECT * FROM barang"; $sql = mysqli_query($conn, $query); $no = 1; //
+Penomoran baris tabel
+while ($data = mysqli_fetch_array($sql)) {
+  echo "<tr>";
+  echo "<td>".$no++."</td>"; // Nomor
+  echo "<td>".$data['nama_barang']."</td>"; // Nama barang
+  echo "<td>".$data['stock']."</td>"; // Stok
+  echo "<td>".$data['harga']."</td>"; // Harga
+  echo "<td>
+      <a href='edit_barang.php?id=".$data['id']."'>Edit</a>
+      <a href='hapus_barang.php?id=".$data['id']."' onclick='return confirm(\"Anda yakin ingin menghapus data?\")'>Hapus</a>
+  </td>"; // Tombol Edit dan Hapus
+  echo "</tr>";
+}
